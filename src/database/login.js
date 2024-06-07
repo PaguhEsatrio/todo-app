@@ -1,11 +1,13 @@
 const users = [
   {
-    username: 'admin',
-    password: '123'
-  }
+    name: 'Strangers',
+    username: 'spv',
+    password: 'server',
+  },
 ];
 
-export const authenticate = (password) => {
-  const user = users.find(user => user.password === password);
-  return user !== undefined;
+const getauthenticate = (username, password) => {
+  return users.find((user) => user.username === username && user.password === password);
 };
+
+export { getauthenticate };

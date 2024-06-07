@@ -1,19 +1,36 @@
 import React, { useState } from 'react';
-import './App.css';
-import { getTodos } from './database/todo';
-import TodoList from './components/TodoList';
+import Body from './components/Body';
+import Login from './components/Login';
+import { getauthenticate } from './database/login';
 
 function App() {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [user, setUser] = useState(null);
 
-  const [todos, _  ] = useState(getTodos());
+  const handleLogin = (username, password) => {
+    const authenticatedUser = getauthenticate(username, password);
+    if (authenticatedUser) {
+      setIsLoggedIn(true);
+      setUser(authenticatedUser);
+    } else {
+      alert('Username atau Password salah!');
+    }
+  };
+
+  const handleLogout = () => {
+    setIsLoggedIn(false);
+    setUser(null);
+  };
 
   return (
-    <>
-      
-      <h3>Todo App</h3>
-      <TodoList todos={todos}/>
-    </>
-  )
+    <div>
+      {isLoggedIn ? (
+        <Body onLogout={handleLogout} user={user} />
+      ) : (
+        <Login onLogin={handleLogin} />
+      )}
+    </div>
+  );
 }
 
 export default App;

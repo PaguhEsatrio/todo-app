@@ -1,17 +1,17 @@
 const todos =[
     {
       id: 1,
-      title: 'Finish React Course',
+      title: 'mushroom',
       completed: false,
     },
     {
       id: 2,
-      title: 'Have lunch with Parents',
+      title: 'blueberry',
       completed: false,
     },
     {
       id: 3,
-      title: 'Study React with Mentor',
+      title: 'onion',
       completed: false,
     },
   ];
